@@ -15,7 +15,7 @@
         android:layout_gravity="center_horizontal"
         android:padding="10dp"
         android:layout_weight="0.10"
-        android:textSize="25dp"
+        android:textSize="30dp"
         android:textIsSelectable="false"
         android:textAlignment="center"
         android:layout_alignParentTop="true"
@@ -25,34 +25,35 @@
 
     <Button
         android:layout_width="294dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:text="STUDENT LOGIN"
         android:id="@+id/std_button"
         android:layout_weight="0.10"
-        android:height="30dp"
+        android:onClick="studAuth"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/lib_button"
-        android:layout_alignStart="@+id/lib_button" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="294dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:text="FACULTY LOGIN"
         android:id="@+id/fac_button"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/std_button"
+        android:onClick="facAuth"
         android:layout_alignLeft="@+id/std_button"
-        android:layout_alignStart="@+id/std_button"
-        android:layout_marginBottom="40dp" />
+        android:layout_alignStart="@+id/std_button" />
 
     <Button
         android:layout_width="294dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:text="LIBRARIAN LOGIN"
         android:id="@+id/lib_button"
-        android:layout_alignWithParentIfMissing="false"
+        android:onClick="libAuth"
         android:layout_below="@+id/fac_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/fac_button"
+        android:layout_alignStart="@+id/fac_button"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
