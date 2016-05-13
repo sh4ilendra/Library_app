@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 
-/**
- * Created by DR on 5/11/2016.
- */
+
 public class StudentRegister extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

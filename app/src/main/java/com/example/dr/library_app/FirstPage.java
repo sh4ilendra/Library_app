@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class FirstPage extends AppCompatActivity {
 
-    public Button stud,fac,lib;
+    private Button stud,fac,lib;
     public void studAuth(){
         stud=(Button)findViewById(R.id.std_button);
         stud.setOnClickListener(new View.OnClickListener() {
