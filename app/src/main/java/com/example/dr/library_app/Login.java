@@ -1,10 +1,11 @@
 package com.example.dr.library_app;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
@@ -18,7 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Login extends Activity {
+public class Login extends AppCompatActivity {
 
     EditText username, password;
     String Username, Password;
