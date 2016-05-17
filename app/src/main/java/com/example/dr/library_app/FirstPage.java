@@ -9,13 +9,13 @@ import android.widget.Button;
 
 public class FirstPage extends AppCompatActivity {
 
-    public Button stud,fac,lib;
+    private Button stud,fac,lib;
     public void studAuth(){
         stud=(Button)findViewById(R.id.std_button);
         stud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent fpage=new Intent(FirstPage.this,StudentUser.class);
+                Intent fpage=new Intent(FirstPage.this,Login.class);
                 startActivity(fpage);
             }
         });

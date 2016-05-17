@@ -9,21 +9,24 @@ import android.widget.Button;
 
 
 public class StudentUser extends AppCompatActivity {
-    public Button stregister;
+
+    private Button stReg;
+    public void studReg(){
+        stReg=(Button)findViewById(R.id.stud_register);
+        stReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regst=new Intent(StudentUser.this,StudentRegister.class);
+                startActivity(regst);
+            }
+        });
+
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_user);
-    }
-    public void studAuth(){
-        stregister=(Button)findViewById(R.id.stRegister);
-        stregister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent stIntent = new Intent(StudentUser.this, StudentRegister.class);
-                startActivity(stIntent);
-            }
-        });
-
+        studReg();
     }
 }

@@ -1,0 +1,119 @@
+package com.example.dr.library_app;
+
+
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+
+public class Register extends AppCompatActivity {
+
+    EditText name,roll_no ,password, email,branch,year,phone,username;
+    String Name, Password, Email,Roll_no,Branch,Year,Phone,Username;
+    Context ctx=this;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_register);
+        name = (EditText) findViewById(R.id.stName);
+        roll_no = (EditText) findViewById(R.id.stRoll);
+        branch = (EditText) findViewById(R.id.stBranch);
+        year = (EditText) findViewById(R.id.stYear);
+        email = (EditText) findViewById(R.id.stEmail);
+        phone = (EditText) findViewById(R.id.stPhone);
+        username = (EditText) findViewById(R.id.stUsername);
+        password= (EditText) findViewById(R.id.stPassword);
+
+    }
+
+    public void register_register(View v){
+        Name = name.getText().toString();
+        Roll_no=roll_no.getText().toString();
+        Branch=branch.getText().toString();
+        Year=year.getText().toString();
+        Email = email.getText().toString();
+        Phone=phone.getText().toString();
+        Username=username.getText().toString();
+        Password = password.getText().toString();
+
+        BackGround b = new BackGround();
+        b.execute(Name,Roll_no,Branch,Year,Email,Phone,Username, Password);
+    }
+
+    class BackGround extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String name = params[0];
+            String roll_no=params[1];
+            String branch=params[2];
+            String year=params[3];
+            String email=params[4];
+            String phone=params[5];
+            String username=params[6];
+            String password=params[7];
+            String data="";
+            int tmp;
+
+            try {
+                URL url = new URL("http://libraryphp-shailu.rhcloud.com/register.php");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
+                String datav= URLEncoder.encode("name","UTF-8")+"="+URLEncoder.encode(name,"UTF-8")+"&"+
+                        URLEncoder.encode("roll_no","UTF-8")+"="+URLEncoder.encode(roll_no,"UTF-8")+"&"+
+                        URLEncoder.encode("branch","UTF-8")+"="+URLEncoder.encode(branch,"UTF-8")+"&"+
+                        URLEncoder.encode("year","UTF-8")+"="+URLEncoder.encode(year,"UTF-8")+"&"+
+                        URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"+
+                        URLEncoder.encode("phone","UTF-8")+"="+URLEncoder.encode(phone,"UTF-8")+"&"+
+                        URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
+                        URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
+                bw.write(datav);
+                bw.flush();
+                bw.close();
+                os.close();
+                InputStream is = httpURLConnection.getInputStream();
+                while((tmp=is.read())!=-1){
+                    data+= (char)tmp;
+                }
+                is.close();
+                httpURLConnection.disconnect();
+
+                return data;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return "Exception: "+e.getMessage();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "Exception: "+e.getMessage();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            if(s.equals("")){
+                s="Data saved successfully.";
+            }
+            Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+        }
+    }
+
+}
