@@ -102,7 +102,7 @@ public class Login extends AppCompatActivity {
                 err = "Exception: "+e.getMessage();
             }
 
-            Intent i = new Intent(ctx, Home.class);
+            Intent i = new Intent(ctx, NavigationDrawer.class);
             i.putExtra("name", NAME);
             i.putExtra("roll_no",ROLLNO);
             i.putExtra("branch",BRANCH);

@@ -1,11 +1,11 @@
 package com.example.dr.library_app;
 
-import android.app.Activity;
-import android.content.Intent;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-public class Home extends Activity {
+public class Home extends AppCompatActivity {
 
     String name, password, email, Err,branch,year,phone,username,roll_no;
     TextView nameTV, emailTV, passwordTV, err,rollTV,branchTV,yearTV,phoneTV,usernameTV;
