@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class NavigationDrawer extends AppCompatActivity {
@@ -18,8 +19,8 @@ public class NavigationDrawer extends AppCompatActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     FragmentTransaction fragmentTransaction;
     NavigationView navigationView;
-    //String email;
-    //TextView emailTV;
+    String email;
+    TextView emailTV;
 
 
     @Override
@@ -27,9 +28,6 @@ public class NavigationDrawer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
 
-       // emailTV = (TextView) findViewById(R.id.nav_header_email);
-        //email=getIntent().getStringExtra("email");
-        //emailTV.setText("Welcome !!! "+email);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
@@ -85,6 +83,10 @@ public class NavigationDrawer extends AppCompatActivity {
                 return true;
             }
         });
+        View header=navigationView.getHeaderView(0);
+        emailTV = (TextView) header.findViewById(R.id.nav_header_email);
+        email=getIntent().getStringExtra("email");
+        emailTV.setText("Welcome !!! "+email);
     }
 
     @Override
