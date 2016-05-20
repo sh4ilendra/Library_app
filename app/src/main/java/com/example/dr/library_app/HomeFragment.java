@@ -65,9 +65,8 @@ public class HomeFragment extends Fragment {
         }
         else
         {
-            getFragmentManager().popBackStack();
-            Intent intent=new Intent(getActivity().getApplicationContext(),Login.class);
-            startActivity(intent);
+            getActivity().getFragmentManager().popBackStackImmediate();
+            getActivity().finish();
             Toast.makeText(getActivity().getApplicationContext(), "Incorrect Username or password !!! ", Toast.LENGTH_LONG).show();
 
         }
