@@ -1,48 +1,57 @@
 package com.example.dr.library_app;
 
-import android.app.Activity;
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class Home extends Activity {
+import java.util.Arrays;
 
-    String name, password, email, Err,branch,year,phone,username,roll_no;
-    TextView nameTV, emailTV, passwordTV, err,rollTV,branchTV,yearTV,phoneTV,usernameTV;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class Home extends Fragment {
+    private static final String[] IMAGES = new String[]{
+            "http://4.bp.blogspot.com/-LwDlh5jrDac/UcwJz06FdUI/AAAAAAAAAFM/GOKDuI_iD_E/s1600/operating-system-concepts-by-galvin.jpg",
+            "http://ecx.images-amazon.com/images/I/51fQw8OX4-L._SX303_BO1,204,203,200_.jpg",
+            "http://highered.mcgraw-hill.com/sites/dl/free/0070131511/cover/cormen-lg_cover.jpg",
+            "http://www.gatecounsellor.com/books/images/programming-with-c-3-edition-9780070145900.jpg",
+            "http://images.contentreserve.com/ImageType-100/0018-1/%7B9E60640B-CB0B-40A5-8AC0-77089E20028C%7DImg100.jpg",
+            "http://img.docstoccdn.com/thumb/orig/121637281.png"
+
+    };
+    private ViewPager pager;
+
+
+
+    public Home() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.home, container, false);
+        // Inflate the layout for this fragment
+        pager = (ViewPager)view.findViewById(R.id.pager);
+        ScreenSlidePagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getActivity().getSupportFragmentManager());
 
-        nameTV = (TextView) findViewById(R.id.home_name);
-        rollTV=(TextView)findViewById(R.id.home_roll_no);
-        branchTV=(TextView)findViewById(R.id.home_branch);
-        yearTV=(TextView)findViewById(R.id.home_year);
-        emailTV = (TextView) findViewById(R.id.home_email);
-        phoneTV=(TextView)findViewById(R.id.home_phone);
-        usernameTV=(TextView)findViewById(R.id.home_username);
-        passwordTV=(TextView)findViewById(R.id.home_password);
-        err = (TextView) findViewById(R.id.err);
-
-        name = getIntent().getStringExtra("name");
-        roll_no=getIntent().getStringExtra("roll_no");
-        branch=getIntent().getStringExtra("branch");
-        year=getIntent().getStringExtra("year");
-        email=getIntent().getStringExtra("email");
-        phone=getIntent().getStringExtra("phone");
-        username=getIntent().getStringExtra("username");
-        password=getIntent().getStringExtra("password");
-        Err = getIntent().getStringExtra("err");
-
-        nameTV.setText("Welcome "+name);
-        rollTV.setText("Your Roll No. is "+roll_no);
-        branchTV.setText("Your Branch is "+branch);
-        yearTV.setText("You are in "+year+" year");
-        emailTV.setText("Your email Id is "+email);
-        phoneTV.setText("Your contact no. is "+phone);
-        usernameTV.setText("Your username is "+username);
-        passwordTV.setText("Your password is "+password);
-        err.setText(Err);
+        pagerAdapter.addAll(Arrays.asList(IMAGES));
+        pager.setAdapter(pagerAdapter);
+        CirclePageIndicator indicator = (CirclePageIndicator)view.findViewById(R.id.indicator);
+        indicator.setViewPager(pager);
+        return view;
+    }
+    public void onBackPressed() {
+        if (pager.getCurrentItem() == 0) {
+            super.getActivity().onBackPressed();
+        } else {
+            pager.setCurrentItem(pager.getCurrentItem() - 1);
+        }
     }
 }
