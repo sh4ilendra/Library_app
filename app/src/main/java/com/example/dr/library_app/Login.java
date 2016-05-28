@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,11 +43,35 @@ public class Login extends AppCompatActivity {
     }
 
     public void main_login(View v){
-        Username = username.getText().toString();
-        Password = password.getText().toString();
-        BackGround b = new BackGround();
-        b.execute(Username, Password);
+
+
+        if (  ( !username.getText().toString().equals("")) && ( !password.getText().toString().equals("")) )
+        {
+            Username = username.getText().toString();
+            Password = password.getText().toString();
+            BackGround b = new BackGround();
+            b.execute(Username, Password);
+        }
+        else if ( ( !username.getText().toString().equals("")) )
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Password field empty", Toast.LENGTH_SHORT).show();
+        }
+        else if ( ( !password.getText().toString().equals("")) )
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Username field empty", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Username and Password fields are empty", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
+
 
     class BackGround extends AsyncTask<String, String, String> {
 

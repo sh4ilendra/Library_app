@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -14,8 +15,8 @@ import android.widget.TextView;
  */
 public class HomeFragment extends Fragment {
 
-    String name, password, email, Err,branch,year,phone,username,roll_no;
-    TextView nameTV, emailTV, passwordTV, err,rollTV,branchTV,yearTV,phoneTV,usernameTV;
+    String name, password, email,branch,year,phone,username,roll_no;
+    TextView nameTV, emailTV, passwordTV,rollTV,branchTV,yearTV,phoneTV,usernameTV;
 
 
 
@@ -51,14 +52,23 @@ public class HomeFragment extends Fragment {
         password=getActivity().getIntent().getStringExtra("password");
 
 
-        nameTV.setText("Welcome "+name);
-        rollTV.setText("Your Roll No. is "+roll_no);
-        branchTV.setText("Your Branch is "+branch);
-        yearTV.setText("You are in "+year+" year");
-        emailTV.setText("Your email Id is "+email);
-        phoneTV.setText("Your contact no. is "+phone);
-        usernameTV.setText("Your username is "+username);
-        passwordTV.setText("Your password is "+password);
+        if(username!=null) {
+            nameTV.setText("Welcome " + name);
+            rollTV.setText("Your Roll No. is " + roll_no);
+            branchTV.setText("Your Branch is " + branch);
+            yearTV.setText("You are in " + year + " year");
+            emailTV.setText("Your email Id is " + email);
+            phoneTV.setText("Your contact no. is " + phone);
+            usernameTV.setText("Your username is " + username);
+            passwordTV.setText("Your password is " + password);
+        }
+        else
+        {
+            getActivity().getFragmentManager().popBackStackImmediate();
+            getActivity().finish();
+            Toast.makeText(getActivity().getApplicationContext(), "Incorrect Username or password !!! ", Toast.LENGTH_LONG).show();
+
+        }
         return view;
     }
 

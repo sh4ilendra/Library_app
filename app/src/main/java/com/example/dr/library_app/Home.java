@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
@@ -25,6 +26,7 @@ public class Home extends Fragment {
 
     };
     private ViewPager pager;
+    String username;
 
 
 
@@ -40,12 +42,22 @@ public class Home extends Fragment {
         // Inflate the layout for this fragment
         pager = (ViewPager)view.findViewById(R.id.pager);
         ScreenSlidePagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getActivity().getSupportFragmentManager());
+        username=getActivity().getIntent().getStringExtra("username");
 
-        pagerAdapter.addAll(Arrays.asList(IMAGES));
-        pager.setAdapter(pagerAdapter);
-        CirclePageIndicator indicator = (CirclePageIndicator)view.findViewById(R.id.indicator);
-        indicator.setViewPager(pager);
-        return view;
+        if(username!=null) {
+            pagerAdapter.addAll(Arrays.asList(IMAGES));
+            pager.setAdapter(pagerAdapter);
+            CirclePageIndicator indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
+            indicator.setViewPager(pager);
+        }
+        else
+        {
+            getActivity().getFragmentManager().popBackStackImmediate();
+            getActivity().finish();
+            Toast.makeText(getActivity().getApplicationContext(), "Incorrect Username or password !!! ", Toast.LENGTH_LONG).show();
+        }
+            return view;
+
     }
     public void onBackPressed() {
         if (pager.getCurrentItem() == 0) {
