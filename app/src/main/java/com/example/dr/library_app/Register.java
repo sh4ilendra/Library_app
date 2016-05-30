@@ -42,17 +42,28 @@ public class Register extends AppCompatActivity {
     }
 
     public void register_register(View v){
-        Name = name.getText().toString();
-        Roll_no=roll_no.getText().toString();
-        Branch=branch.getText().toString();
-        Year=year.getText().toString();
-        Email = email.getText().toString();
-        Phone=phone.getText().toString();
-        Username=username.getText().toString();
-        Password = password.getText().toString();
 
-        BackGround b = new BackGround();
-        b.execute(Name,Roll_no,Branch,Year,Email,Phone,Username, Password);
+
+        if (  ( !username.getText().toString().equals("")) && ( !password.getText().toString().equals(""))
+                && ( !roll_no.getText().toString().equals(""))  && ( !name.getText().toString().equals(""))
+                && ( !year.getText().toString().equals(""))   && ( !email.getText().toString().equals(""))
+                && ( !phone.getText().toString().equals(""))  && ( !branch.getText().toString().equals("")))
+        {
+            Name = name.getText().toString();
+            Roll_no = roll_no.getText().toString();
+            Branch = branch.getText().toString();
+            Year = year.getText().toString();
+            Email = email.getText().toString();
+            Phone = phone.getText().toString();
+            Username = username.getText().toString();
+            Password = password.getText().toString();
+
+            BackGround b = new BackGround();
+            b.execute(Name, Roll_no, Branch, Year, Email, Phone, Username, Password);
+        }else
+        {
+            Toast.makeText(getApplicationContext(),"Empty fields are not allowed",Toast.LENGTH_LONG).show();
+        }
     }
 
     class BackGround extends AsyncTask<String, String, String> {
@@ -71,7 +82,7 @@ public class Register extends AppCompatActivity {
             int tmp;
 
             try {
-                URL url = new URL("http://php-dr22libraryapp.rhcloud.com/register.php");
+                URL url = new URL("http://libraryphp-shailu.rhcloud.com/register.php");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

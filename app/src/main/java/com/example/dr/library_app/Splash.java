@@ -23,7 +23,7 @@ public class Splash extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(3000);
-                    Intent startMainScreen = new Intent(getApplicationContext(), FirstPage.class);
+                    Intent startMainScreen = new Intent(getApplicationContext(), NotificationMessage.class);
                     startActivity(startMainScreen);
                     finish();
                 } catch (InterruptedException e) {
