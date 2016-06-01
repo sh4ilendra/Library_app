@@ -3,6 +3,7 @@ package com.example.dr.library_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -29,6 +30,7 @@ public class Login extends AppCompatActivity {
     String USERNAME = null, PASSWORD = null, EMAIL = null,NAME=null,ROLLNO=null,BRANCH=null,YEAR=null,PHONE=null;
     FragmentTransaction fragmentTransaction1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +46,9 @@ public class Login extends AppCompatActivity {
 
     public void main_login(View v){
 
-
         if (  ( !username.getText().toString().equals("")) && ( !password.getText().toString().equals("")) )
         {
+
             Username = username.getText().toString();
             Password = password.getText().toString();
             BackGround b = new BackGround();

@@ -120,8 +120,8 @@
         android:hint="Password"
         android:textColorHint="#f4e6e6"
         android:layout_margin="2dp" />
-<!--
-       <EditText
+
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -135,8 +135,6 @@
         android:hint="Confirm password"
         android:textColorHint="#f4e6e6"
         android:layout_margin="2dp" />
-       -->
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -144,7 +142,7 @@
         android:onClick="register_register"
         android:id="@+id/stRegister"
         android:height="40dp"
-        android:layout_below="@+id/stPassword"
+        android:layout_below="@+id/stCnfrmPass"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="70dp"

@@ -27,7 +27,7 @@
     <Button
         android:layout_width="294dp"
         android:layout_height="70dp"
-        android:text="STUDENT LOGIN"
+        android:text="MEMBER LOGIN"
         android:id="@+id/std_button"
         android:layout_weight="0.10"
         android:onClick="studAuth"
@@ -37,24 +37,13 @@
     <Button
         android:layout_width="294dp"
         android:layout_height="70dp"
-        android:text="FACULTY LOGIN"
-        android:id="@+id/fac_button"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/std_button"
-        android:onClick="facAuth"
-        android:layout_alignLeft="@+id/std_button"
-        android:layout_alignStart="@+id/std_button" />
-
-    <Button
-        android:layout_width="294dp"
-        android:layout_height="70dp"
         android:text="LIBRARIAN LOGIN"
         android:id="@+id/lib_button"
         android:onClick="libAuth"
-        android:layout_below="@+id/fac_button"
-        android:layout_alignLeft="@+id/fac_button"
-        android:layout_alignStart="@+id/fac_button"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/std_button"
+        android:layout_alignLeft="@+id/std_button"
+        android:layout_alignStart="@+id/std_button" />
 
     <TextView
         android:layout_width="wrap_content"

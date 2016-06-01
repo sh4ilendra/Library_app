@@ -2,6 +2,7 @@ package com.example.dr.library_app;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,8 +22,8 @@ import java.net.URLEncoder;
 
 public class Register extends AppCompatActivity {
 
-    EditText name,roll_no ,password, email,branch,year,phone,username;
-    String Name, Password, Email,Roll_no,Branch,Year,Phone,Username;
+    EditText name,roll_no ,password, email,branch,year,phone,username,cnfpass;
+    String Name, Password, Email,Roll_no,Branch,Year,Phone,Username,Cnfpass;
     Context ctx=this;
 
     @Override
@@ -38,6 +39,7 @@ public class Register extends AppCompatActivity {
         phone = (EditText) findViewById(R.id.stPhone);
         username = (EditText) findViewById(R.id.stUsername);
         password= (EditText) findViewById(R.id.stPassword);
+        cnfpass=(EditText)findViewById(R.id.stCnfrmPass);
 
     }
 
@@ -47,7 +49,8 @@ public class Register extends AppCompatActivity {
         if (  ( !username.getText().toString().equals("")) && ( !password.getText().toString().equals(""))
                 && ( !roll_no.getText().toString().equals(""))  && ( !name.getText().toString().equals(""))
                 && ( !year.getText().toString().equals(""))   && ( !email.getText().toString().equals(""))
-                && ( !phone.getText().toString().equals(""))  && ( !branch.getText().toString().equals("")))
+                && ( !phone.getText().toString().equals(""))  && ( !branch.getText().toString().equals(""))
+                && ( !cnfpass.getText().toString().equals("")))
         {
             Name = name.getText().toString();
             Roll_no = roll_no.getText().toString();
@@ -57,9 +60,18 @@ public class Register extends AppCompatActivity {
             Phone = phone.getText().toString();
             Username = username.getText().toString();
             Password = password.getText().toString();
+            Cnfpass=cnfpass.getText().toString();
+            if(Cnfpass.equals(Password))
+            {
+                BackGround b = new BackGround();
+                b.execute(Name, Roll_no, Branch, Year, Email, Phone, Username, Password);
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"Passwords don't match",Toast.LENGTH_LONG).show();
+            }
 
-            BackGround b = new BackGround();
-            b.execute(Name, Roll_no, Branch, Year, Email, Phone, Username, Password);
+
         }else
         {
             Toast.makeText(getApplicationContext(),"Empty fields are not allowed",Toast.LENGTH_LONG).show();
@@ -120,10 +132,17 @@ public class Register extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            if(s.equals("")){
-                s="Data saved successfully.";
+            if(s.equals("success")){
+                s="You have succesfully registered!!!";
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+                startActivity(intent);
+                finish();
             }
-            Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+            else {
+                Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+            }
         }
     }
 

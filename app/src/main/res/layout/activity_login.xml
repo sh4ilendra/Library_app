@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Student Login"
+        android:text="Member Login"
         android:id="@+id/textview"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -28,7 +28,7 @@
         android:layout_below="@+id/textview"
         android:inputType="text"
 
-        android:hint="Name"
+        android:hint="Username"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -61,6 +61,16 @@
         android:layout_below="@+id/main_password"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not a member yet ?"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/main_login"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:textColor="#f9f6f6"
+        android:textSize="16dp" />
 
     <Button
         android:onClick="main_register"
@@ -68,7 +78,9 @@
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/main_register"
-        android:layout_below="@+id/main_login"
+        android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/main_login"
         android:layout_alignStart="@+id/main_login" />
+
+
 </RelativeLayout>
