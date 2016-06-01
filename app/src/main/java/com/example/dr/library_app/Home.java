@@ -102,8 +102,7 @@ public class Home extends Fragment {
         @Override
         protected JSONArray doInBackground(ApiConnector... params) {
 
-            return params[0].GetAllBooks();
-        }
+            return params[0].GetAllBooks();}
 
         @Override
         protected void onPostExecute(JSONArray jsonArray) {

@@ -133,6 +133,7 @@ public class GetAllBooksListViewAdapter extends BaseAdapter {
             e.printStackTrace();
         }
 
+
         return convertView;
     }
 

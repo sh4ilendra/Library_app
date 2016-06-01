@@ -68,7 +68,7 @@ public class ApiConnector {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.e("JSONARRAY : ", String.valueOf(jsonArray));
+
 
         return jsonArray;
     }
