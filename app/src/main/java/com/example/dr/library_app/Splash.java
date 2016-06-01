@@ -13,9 +13,9 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+       /* this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         Thread splashThread = new Thread(){
@@ -23,7 +23,7 @@ public class Splash extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(3000);
-                    Intent startMainScreen = new Intent(getApplicationContext(), FirstPage.class);
+                    Intent startMainScreen = new Intent(getApplicationContext(), NotificationMessage.class);
                     startActivity(startMainScreen);
                     finish();
                 } catch (InterruptedException e) {

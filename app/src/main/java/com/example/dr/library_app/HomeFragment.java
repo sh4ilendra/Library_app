@@ -15,8 +15,8 @@ import android.widget.Toast;
  */
 public class HomeFragment extends Fragment {
 
-    String name, password, email, Err,branch,year,phone,username,roll_no;
-    TextView nameTV, emailTV, passwordTV, err,rollTV,branchTV,yearTV,phoneTV,usernameTV;
+    String name, password, email,branch,year,phone,username,roll_no;
+    TextView nameTV, emailTV, passwordTV,rollTV,branchTV,yearTV,phoneTV,usernameTV;
 
 
 

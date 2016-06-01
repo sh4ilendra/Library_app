@@ -19,8 +19,9 @@ public class NavigationDrawer extends AppCompatActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     FragmentTransaction fragmentTransaction;
     NavigationView navigationView;
-    String email,username;
+    String email,name;
     TextView emailTV,userTV;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +87,8 @@ public class NavigationDrawer extends AppCompatActivity {
         });
         View header=navigationView.getHeaderView(0);
         userTV = (TextView) header.findViewById(R.id.nav_header_text);
-        username=getIntent().getStringExtra("name");
-        userTV.setText("Welcome !!! " + username);
+        name=getIntent().getStringExtra("name");
+        userTV.setText("Welcome !!! " + name);
         emailTV = (TextView) header.findViewById(R.id.nav_header_email);
         email=getIntent().getStringExtra("email");
         emailTV.setText(email);
