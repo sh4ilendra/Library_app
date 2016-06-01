@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +27,6 @@ public class Login extends AppCompatActivity {
     String Username, Password;
     Context ctx=this;
     String USERNAME = null, PASSWORD = null, EMAIL = null,NAME=null,ROLLNO=null,BRANCH=null,YEAR=null,PHONE=null;
-    FragmentTransaction fragmentTransaction1;
 
 
     @Override
@@ -38,7 +36,6 @@ public class Login extends AppCompatActivity {
         username = (EditText) findViewById(R.id.main_username);
         password = (EditText) findViewById(R.id.main_password);
     }
-
 
     public void main_register(View v){
         startActivity(new Intent(this,Register.class));
@@ -103,6 +100,7 @@ public class Login extends AppCompatActivity {
                 is.close();
                 httpURLConnection.disconnect();
 
+
                 return data;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -131,17 +129,19 @@ public class Login extends AppCompatActivity {
                 e.printStackTrace();
                 err = "Exception: "+e.getMessage();
             }
+
             Intent i = new Intent(ctx, NavigationDrawer.class);
-                        i.putExtra("name", NAME);
-                        i.putExtra("roll_no",ROLLNO);
-                        i.putExtra("branch",BRANCH);
-                        i.putExtra("year",YEAR);
-                        i.putExtra("email",EMAIL);
-                        i.putExtra("phone",PHONE);
-                        i.putExtra("username",USERNAME);
-                        i.putExtra("password", PASSWORD);
-                        i.putExtra("err", err);
-                        startActivity(i);
+            i.putExtra("name", NAME);
+            i.putExtra("roll_no",ROLLNO);
+            i.putExtra("branch",BRANCH);
+            i.putExtra("year",YEAR);
+            i.putExtra("email",EMAIL);
+            i.putExtra("phone",PHONE);
+            i.putExtra("username",USERNAME);
+            i.putExtra("password", PASSWORD);
+            i.putExtra("err", err);
+            startActivity(i);
+
         }
     }
 }
