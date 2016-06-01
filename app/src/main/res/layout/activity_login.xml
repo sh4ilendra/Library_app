@@ -70,7 +70,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
         android:textColor="#f9f6f6"
-        android:textSize="16dp" />
+        android:textSize="16dp"  />
 
     <Button
         android:onClick="main_register"
