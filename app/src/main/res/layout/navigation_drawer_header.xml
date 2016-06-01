@@ -16,7 +16,7 @@
         android:layout_marginRight="60dp"
         android:layout_marginEnd="60dp"
         android:layout_centerVertical="true"
-         >
+        >
     </TextView>
 
     <TextView

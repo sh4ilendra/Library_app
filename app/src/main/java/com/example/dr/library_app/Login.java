@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +26,6 @@ public class Login extends AppCompatActivity {
     String Username, Password;
     Context ctx=this;
     String USERNAME = null, PASSWORD = null, EMAIL = null,NAME=null,ROLLNO=null,BRANCH=null,YEAR=null,PHONE=null;
-    FragmentTransaction fragmentTransaction1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +35,38 @@ public class Login extends AppCompatActivity {
         password = (EditText) findViewById(R.id.main_password);
     }
 
-
     public void main_register(View v){
         startActivity(new Intent(this,Register.class));
     }
 
     public void main_login(View v){
-        Username = username.getText().toString();
-        Password = password.getText().toString();
-        BackGround b = new BackGround();
-        b.execute(Username, Password);
+
+
+        if (  ( !username.getText().toString().equals("")) && ( !password.getText().toString().equals("")) )
+        {
+            Username = username.getText().toString();
+            Password = password.getText().toString();
+            BackGround b = new BackGround();
+            b.execute(Username, Password);
+        }
+        else if ( ( !username.getText().toString().equals("")) )
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Password field empty", Toast.LENGTH_SHORT).show();
+        }
+        else if ( ( !password.getText().toString().equals("")) )
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Username field empty", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Username and Password fields are empty", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 
     class BackGround extends AsyncTask<String, String, String> {
@@ -104,17 +125,19 @@ public class Login extends AppCompatActivity {
                 e.printStackTrace();
                 err = "Exception: "+e.getMessage();
             }
+
             Intent i = new Intent(ctx, NavigationDrawer.class);
-                        i.putExtra("name", NAME);
-                        i.putExtra("roll_no",ROLLNO);
-                        i.putExtra("branch",BRANCH);
-                        i.putExtra("year",YEAR);
-                        i.putExtra("email",EMAIL);
-                        i.putExtra("phone",PHONE);
-                        i.putExtra("username",USERNAME);
-                        i.putExtra("password", PASSWORD);
-                        i.putExtra("err", err);
-                        startActivity(i);
+            i.putExtra("name", NAME);
+            i.putExtra("roll_no",ROLLNO);
+            i.putExtra("branch",BRANCH);
+            i.putExtra("year",YEAR);
+            i.putExtra("email",EMAIL);
+            i.putExtra("phone",PHONE);
+            i.putExtra("username",USERNAME);
+            i.putExtra("password", PASSWORD);
+            i.putExtra("err", err);
+            startActivity(i);
+
         }
     }
 }
