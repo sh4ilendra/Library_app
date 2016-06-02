@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "968948895571",
+    "project_id": "libraryapp-95733"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968948895571:android:eaec775a82c9ea75",
+        "android_client_info": {
+          "package_name": "com.example.dr.library_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG_QXexzKuRu8vFcLxe0p9-u9c1scM6Ro"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
