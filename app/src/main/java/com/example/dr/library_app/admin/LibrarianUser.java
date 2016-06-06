@@ -1,14 +1,16 @@
-package com.example.dr.library_app;
-
+package com.example.dr.library_app.admin;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.dr.library_app.*;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,25 +22,22 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Login extends AppCompatActivity {
 
+public class LibrarianUser extends AppCompatActivity {
     EditText username, password;
     String Username, Password;
     Context ctx=this;
-    String USERNAME = null, PASSWORD = null, EMAIL = null,NAME=null,ROLLNO=null,BRANCH=null,YEAR=null,PHONE=null;
+    String USERNAME = null, PASSWORD = null, EMAIL = null,NAME=null,PHONE=null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        username = (EditText) findViewById(R.id.main_username);
-        password = (EditText) findViewById(R.id.main_password);
+        setContentView(R.layout.librarian_user);
+        username = (EditText) findViewById(R.id.libusername);
+        password = (EditText) findViewById(R.id.libpassword);
     }
 
-    public void main_register(View v){
-        startActivity(new Intent(this,Register.class));
-    }
 
     public void main_login(View v){
 
@@ -81,7 +80,7 @@ public class Login extends AppCompatActivity {
             int tmp;
 
             try {
-                URL url = new URL("http://libraryphp-shailu.rhcloud.com/login.php");
+                URL url = new URL("http://libraryphp-shailu.rhcloud.com/login_admin.php");
                 String urlParams = "username="+name+"&password="+password;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -95,6 +94,7 @@ public class Login extends AppCompatActivity {
                 while((tmp=is.read())!=-1){
                     data+= (char)tmp;
                 }
+
                 is.close();
                 httpURLConnection.disconnect();
 
@@ -116,9 +116,6 @@ public class Login extends AppCompatActivity {
                 JSONObject root = new JSONObject(s);
                 JSONObject user_data = root.getJSONObject("user_data");
                 NAME = user_data.getString("name");
-                ROLLNO=user_data.getString("roll_no");
-                BRANCH=user_data.getString("branch");
-                YEAR=user_data.getString("year");
                 EMAIL = user_data.getString("email");
                 PHONE=user_data.getString("phone");
                 USERNAME=user_data.getString("username");
@@ -128,11 +125,8 @@ public class Login extends AppCompatActivity {
                 err = "Exception: "+e.getMessage();
             }
 
-            Intent i = new Intent(ctx, NavigationDrawer.class);
+            Intent i = new Intent(ctx, com.example.dr.library_app.admin.NavigationDrawer.class);
             i.putExtra("name", NAME);
-            i.putExtra("roll_no",ROLLNO);
-            i.putExtra("branch",BRANCH);
-            i.putExtra("year",YEAR);
             i.putExtra("email",EMAIL);
             i.putExtra("phone",PHONE);
             i.putExtra("username",USERNAME);

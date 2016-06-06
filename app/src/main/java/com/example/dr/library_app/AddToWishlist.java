@@ -60,7 +60,7 @@ public class AddToWishlist extends Fragment {
     public void setListAdapter(JSONArray jsonArray)
     {
         this.jsonArray = jsonArray;
-        this.GetAllBooksListView.setAdapter(new GetAllBooksListViewAdapter(jsonArray, getActivity()));
+        this.GetAllBooksListView.setAdapter(new AddToWishlistAdapter(jsonArray, getActivity()));
     }
 
     private class GetAllBooksTask extends AsyncTask<ApiConnector,Long,JSONArray>

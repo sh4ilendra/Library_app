@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import com.example.dr.library_app.admin.LibrarianUser;
 
 
 public class FirstPage extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class FirstPage extends AppCompatActivity {
         lib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent fpage3=new Intent(FirstPage.this,LibrarianUser.class);
+                Intent fpage3=new Intent(FirstPage.this,com.example.dr.library_app.admin.LibrarianUser.class);
                 startActivity(fpage3);
             }
         });

@@ -1,0 +1,86 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account Info"
+            android:id="@+id/fragment_home"
+            android:gravity="center"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/admin_name"
+            android:layout_alignStart="@+id/admin_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/admin_name"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp"
+            android:layout_below="@+id/fragment_home"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="5dp" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/admin_email"
+            android:layout_below="@+id/admin_name"
+            android:layout_alignLeft="@+id/admin_name"
+            android:layout_alignStart="@+id/admin_name"
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/admin_phone"
+            android:layout_below="@+id/admin_email"
+            android:layout_alignLeft="@+id/admin_email"
+            android:layout_alignStart="@+id/admin_email"
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/admin_username"
+            android:layout_below="@+id/admin_phone"
+            android:layout_alignLeft="@+id/admin_phone"
+            android:layout_alignStart="@+id/admin_phone"
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/admin_password"
+            android:layout_below="@+id/admin_username"
+            android:layout_alignLeft="@+id/admin_username"
+            android:layout_alignStart="@+id/admin_username" />
+
+    </RelativeLayout>
+    <!-- TODO: Update blank fragment layout -->
+
+
+</FrameLayout>
