@@ -4,5 +4,11 @@
     tools:context="com.example.dr.library_app.MainActivity" >
 
     <item android:id="@+id/menuLogout" android:title="Logout"/>
-
+    <item android:id="@+id/changePassword" android:title="Change Password"/>
+    <item
+        android:id="@+id/action_search"
+        android:title="Search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
 </menu>

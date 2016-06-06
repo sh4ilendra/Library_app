@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -18,8 +19,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
-
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -38,9 +37,6 @@ public class Home extends Fragment {
     private JSONArray jsonArray;
     String username;
 
-
-
-
     public Home() {
         // Required empty public constructor
     }
@@ -52,6 +48,7 @@ public class Home extends Fragment {
         View view = inflater.inflate(R.layout.home, container, false);
         // Inflate the layout for this fragment
         pager = (ViewPager)view.findViewById(R.id.pager);
+
         ScreenSlidePagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getActivity().getSupportFragmentManager());
         username=getActivity().getIntent().getStringExtra("username");
 
@@ -76,6 +73,7 @@ public class Home extends Fragment {
                     }
                 }
             });
+
         }
         else {
             getActivity().getFragmentManager().popBackStackImmediate();
@@ -109,5 +107,19 @@ public class Home extends Fragment {
             setListAdapter(jsonArray);
 
         }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+
+
+        return super.onOptionsItemSelected(item);
     }
 }

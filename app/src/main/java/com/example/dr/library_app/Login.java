@@ -3,7 +3,6 @@ package com.example.dr.library_app;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -82,7 +81,7 @@ public class Login extends AppCompatActivity {
             int tmp;
 
             try {
-                URL url = new URL("http://libraryphp-shailu.rhcloud.com/login.php");
+                URL url = new URL("http://php-dr22libraryapp.rhcloud.com/login.php");
                 String urlParams = "username="+name+"&password="+password;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -96,7 +95,6 @@ public class Login extends AppCompatActivity {
                 while((tmp=is.read())!=-1){
                     data+= (char)tmp;
                 }
-
                 is.close();
                 httpURLConnection.disconnect();
 

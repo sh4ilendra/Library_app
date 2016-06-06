@@ -10,8 +10,8 @@
         </item>
         <item
             android:id="@+id/pages_id"
-            android:title="Pages"
-            android:icon="@drawable/ic_pages">
+            android:title="Add to Wishlist"
+            android:icon="@drawable/wishlist_icon">
         </item>
         <item
             android:id="@+id/people_id"
@@ -38,7 +38,6 @@
             android:title="Account Info"
             android:icon="@drawable/my_account">
         </item>
-
     </group>
 
 </menu>
