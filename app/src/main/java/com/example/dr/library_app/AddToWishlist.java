@@ -2,78 +2,57 @@ package com.example.dr.library_app;
 
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AddToWishlist extends Fragment {
-    Toolbar toolbar;
-    private ViewPager pager;
-    private ListView GetAllBooksListView;
-    private JSONArray jsonArray;
 
+    private List<Product> mProductList;
 
-    public AddToWishlist() {
-        // Required empty public constructor
-    }
-
-
+    /** Called when the activity is first created. */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.add_to_wishlist, container, false);
-        this.GetAllBooksListView = (ListView) view.findViewById(R.id.GetAllBooksListview);
-        new GetAllBooksTask().execute(new ApiConnector());
-        this.GetAllBooksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try {
-                    JSONObject bookClicked = jsonArray.getJSONObject(position);
+        View view=inflater.inflate(R.layout.add_to_wishlist, container, false);
 
-                    Intent showDetails = new Intent(getActivity(), BooksDetailsActivity.class);
-                    showDetails.putExtra("BookID", bookClicked.getInt("id"));
-                    startActivity(showDetails);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+        // Obtain a reference to the product catalog
+        mProductList = ShoppingCartHelper.getCatalog(getResources());
+
+        // Create the list
+        ListView listViewCatalog = (ListView) view.findViewById(R.id.ListViewCatalog);
+        listViewCatalog.setAdapter(new ProductAdapter(mProductList, getLayoutInflater(savedInstanceState), false));
+
+        listViewCatalog.setOnItemClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                Intent productDetailsIntent = new Intent(getActivity(),ProductDetailsActivity.class);
+                productDetailsIntent.putExtra(ShoppingCartHelper.PRODUCT_INDEX, position);
+                startActivity(productDetailsIntent);
+            }
+        });
+
+        Button viewShoppingCart = (Button) view.findViewById(R.id.ButtonViewCart);
+        viewShoppingCart.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent viewShoppingCartIntent = new Intent(getActivity(), ShoppingCartActivity.class);
+                startActivity(viewShoppingCartIntent);
             }
         });
 
         return view;
-    }
-    public void setListAdapter(JSONArray jsonArray)
-    {
-        this.jsonArray = jsonArray;
-        this.GetAllBooksListView.setAdapter(new AddToWishlistAdapter(jsonArray, getActivity()));
-    }
-
-    private class GetAllBooksTask extends AsyncTask<ApiConnector,Long,JSONArray>
-    {
-        @Override
-        protected JSONArray doInBackground(ApiConnector... params) {
-
-            return params[0].GetAllBooks();}
-
-        @Override
-        protected void onPostExecute(JSONArray jsonArray) {
-            setListAdapter(jsonArray);
-
-        }
     }
 }

@@ -22,12 +22,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dr.library_app.AboutUs;
 import com.example.dr.library_app.AddToWishlist;
+import com.example.dr.library_app.HelpCenter;
 import com.example.dr.library_app.Home;
 import com.example.dr.library_app.HomeFragment;
+import com.example.dr.library_app.MemberList;
 import com.example.dr.library_app.NewDisplayActivity;
 import com.example.dr.library_app.PeopleFragment;
 import com.example.dr.library_app.R;
+import com.example.dr.library_app.TermsAndConditions;
 
 public class NavigationDrawer extends AppCompatActivity {
 
@@ -70,7 +74,7 @@ public class NavigationDrawer extends AppCompatActivity {
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.admin_container, new Home());
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Home Fragment");
+                        getSupportActionBar().setTitle("Home");
                         item.setChecked(true);
                         drawerLayout.closeDrawers();
 
@@ -87,9 +91,9 @@ public class NavigationDrawer extends AppCompatActivity {
 
                     case R.id.people_id_admin:
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.admin_container, new PeopleFragment());
+                        fragmentTransaction.replace(R.id.admin_container, new MemberList());
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Member List");
+                        getSupportActionBar().setTitle("Members List");
                         item.setChecked(true);
                         drawerLayout.closeDrawers();
 
@@ -98,10 +102,38 @@ public class NavigationDrawer extends AppCompatActivity {
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.admin_container, new Account());
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Account Fragment");
+                        getSupportActionBar().setTitle("Account Details");
                         item.setChecked(true);
                         drawerLayout.closeDrawers();
 
+                        break;
+                    case R.id.aboutus_id_admin:
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.admin_container, new AboutUs());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("About Us");
+                        item.setChecked(true);
+                        drawerLayout.closeDrawers();
+
+                        break;
+                    case R.id.logout_id_admin:
+                        logout();
+                        break;
+                    case R.id.terms_id_admin:
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.admin_container, new TermsAndConditions());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Terms And Conditions");
+                        item.setChecked(true);
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.help_id_admin:
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.admin_container, new HelpCenter());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Help Center");
+                        item.setChecked(true);
+                        drawerLayout.closeDrawers();
                         break;
                 }
                 return true;
@@ -185,9 +217,7 @@ public class NavigationDrawer extends AppCompatActivity {
         if (id == R.id.menuLogout) {
             logout();
         }
-        if (id == R.id.changePassword) {
 
-        }
         if (id == R.id.action_search) {
             return true;
         }

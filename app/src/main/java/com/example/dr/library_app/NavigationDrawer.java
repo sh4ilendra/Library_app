@@ -60,12 +60,12 @@ public class NavigationDrawer extends AppCompatActivity {
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.main_container, new Home());
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Home Fragment");
+                        getSupportActionBar().setTitle("Home");
                         item.setChecked(true);
                         drawerLayout.closeDrawers();
 
                         break;
-                    case R.id.pages_id:
+                    case R.id.addToWishlist:
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.main_container, new AddToWishlist());
                         fragmentTransaction.commit();
@@ -74,11 +74,11 @@ public class NavigationDrawer extends AppCompatActivity {
                         drawerLayout.closeDrawers();
 
                         break;
-                    case R.id.people_id:
+                    case R.id.aboutus_id:
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.main_container, new PeopleFragment());
+                        fragmentTransaction.replace(R.id.main_container, new AboutUs());
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("People Fragment");
+                        getSupportActionBar().setTitle("AboutUs");
                         item.setChecked(true);
                         drawerLayout.closeDrawers();
 
@@ -87,11 +87,30 @@ public class NavigationDrawer extends AppCompatActivity {
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.main_container, new HomeFragment());
                         fragmentTransaction.commit();
-                        getSupportActionBar().setTitle("Account Fragment");
+                        getSupportActionBar().setTitle("Account Details");
                         item.setChecked(true);
                         drawerLayout.closeDrawers();
-
                         break;
+                    case R.id.logout_id:
+                        logout();
+                        break;
+                    case R.id.terms_id:
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.main_container, new TermsAndConditions());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("TermsAndConditions");
+                        item.setChecked(true);
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.help_id:
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.main_container, new HelpCenter());
+                        fragmentTransaction.commit();
+                        getSupportActionBar().setTitle("Help Center");
+                        item.setChecked(true);
+                        drawerLayout.closeDrawers();
+                        break;
+
                 }
                 return true;
             }
@@ -147,7 +166,7 @@ public class NavigationDrawer extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Fetch the data remotely
-                Intent intent = new Intent(NavigationDrawer.this,NewDisplayActivity.class);
+                Intent intent = new Intent(NavigationDrawer.this, NewDisplayActivity.class);
                 startActivity(intent);
                 NewDisplayActivity.fetchBooks(query);
                 // Reset SearchView
@@ -176,8 +195,26 @@ public class NavigationDrawer extends AppCompatActivity {
             if (id == R.id.menuLogout) {
                 logout();
             }
-        if (id == R.id.changePassword) {
+        if (id == R.id.addToWishlist) {
+            Intent intent = new Intent(getApplicationContext(),ShoppingCartActivity.class);
+            startActivity(intent);
 
+        }
+        if (id == R.id.myAccount) {
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.main_container, new HomeFragment());
+            fragmentTransaction.commit();
+            getSupportActionBar().setTitle("Account Fragment");
+            item.setChecked(true);
+            drawerLayout.closeDrawers();
+        }
+        if (id == R.id.aboutus) {
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.main_container, new AboutUs());
+            fragmentTransaction.commit();
+            getSupportActionBar().setTitle("AboutUs Fragment");
+            item.setChecked(true);
+            drawerLayout.closeDrawers();
         }
             if (id == R.id.action_search) {
                 return true;
@@ -189,7 +226,6 @@ public class NavigationDrawer extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
     }
-
     @Override
     public void onBackPressed() {
         //Creating an alert dialog to confirm logout
