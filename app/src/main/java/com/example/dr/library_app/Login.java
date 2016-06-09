@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
             int tmp;
 
             try {
-                URL url = new URL("http://php-dr22libraryapp.rhcloud.com/login.php");
+                URL url = new URL("http://libraryphp-shailu.rhcloud.com/login.php");
                 String urlParams = "username="+name+"&password="+password;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
