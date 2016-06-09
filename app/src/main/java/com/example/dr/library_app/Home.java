@@ -24,8 +24,8 @@ import java.util.Arrays;
  */
 public class Home extends Fragment {
     private static final String[] IMAGES = new String[]{
-            "http://4.bp.blogspot.com/-LwDlh5jrDac/UcwJz06FdUI/AAAAAAAAAFM/GOKDuI_iD_E/s1600/operating-system-concepts-by-galvin.jpg",
             "http://ecx.images-amazon.com/images/I/51fQw8OX4-L._SX303_BO1,204,203,200_.jpg",
+            "http://4.bp.blogspot.com/-LwDlh5jrDac/UcwJz06FdUI/AAAAAAAAAFM/GOKDuI_iD_E/s1600/operating-system-concepts-by-galvin.jpg",
             "http://highered.mcgraw-hill.com/sites/dl/free/0070131511/cover/cormen-lg_cover.jpg",
             "http://www.gatecounsellor.com/books/images/programming-with-c-3-edition-9780070145900.jpg",
             "http://images.contentreserve.com/ImageType-100/0018-1/%7B9E60640B-CB0B-40A5-8AC0-77089E20028C%7DImg100.jpg",
@@ -78,7 +78,7 @@ public class Home extends Fragment {
         else {
             getActivity().getFragmentManager().popBackStackImmediate();
             getActivity().finish();
-            Toast.makeText(getActivity().getApplicationContext(), "Incorrect Username or password !!! ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity().getApplicationContext(), "Incorrect Username or password !!!\n or Check your Internet connection", Toast.LENGTH_LONG).show();
         }
         return view;
     }

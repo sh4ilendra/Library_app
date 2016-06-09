@@ -1,0 +1,77 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dr.library_app.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Contact Us"
+        android:id="@+id/fragment_people"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        ></TextView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dolly Rijwani"
+        android:textSize="30dp"
+        android:layout_marginTop="80dp"
+        android:padding="10dp"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dollyrijwani22@gmail.com"
+            android:textSize="20dp"
+            android:layout_marginTop="120dp"
+            android:padding="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9984666783"
+            android:textSize="20dp"
+            android:layout_marginTop="155dp"
+            android:padding="10dp"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shailendra Singh Verma"
+            android:textSize="30dp"
+            android:layout_marginTop="80dp"
+            android:padding="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="shailuverma111195@gmail.com"
+            android:textSize="20dp"
+            android:layout_marginTop="120dp"
+            android:padding="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8756817206"
+            android:textSize="20dp"
+            android:layout_marginTop="155dp"
+            android:padding="10dp"
+            />
+    </RelativeLayout>
+
+</FrameLayout>

@@ -4,37 +4,44 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/home_id"
+            android:id="@+id/home_id_admin"
             android:title="Home"
             android:icon="@drawable/ic_home">
         </item>
         <item
-            android:id="@+id/addToWishlist"
+            android:id="@+id/pages_id_admin"
             android:title="Add to Wishlist"
             android:icon="@drawable/wishlist_icon">
         </item>
         <item
-            android:id="@+id/account_id"
+            android:id="@+id/people_id_admin"
+            android:title="Member List"
+            android:icon="@drawable/ic_people">
+        </item>
+
+
+        <item
+            android:id="@+id/account_id_admin"
             android:title="Account Info"
             android:icon="@drawable/my_account">
         </item>
         <item
-            android:id="@+id/aboutus_id"
+            android:id="@+id/aboutus_id_admin"
             android:title="About Us"
             android:icon="@drawable/aboutus">
         </item>
         <item
-            android:id="@+id/help_id"
+            android:id="@+id/help_id_admin"
             android:title="Help Center"
             android:icon="@drawable/help_icon">
         </item>
         <item
-            android:id="@+id/terms_id"
+            android:id="@+id/terms_id_admin"
             android:title="Terms and Conditions"
             android:icon="@drawable/ts_cs">
         </item>
         <item
-            android:id="@+id/logout_id"
+            android:id="@+id/logout_id_admin"
             android:title="Logout"
             android:icon="@drawable/logout_icon">
         </item>

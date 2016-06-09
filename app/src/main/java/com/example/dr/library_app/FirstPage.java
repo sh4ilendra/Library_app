@@ -39,7 +39,7 @@ public class FirstPage extends AppCompatActivity {
         lib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent fpage3=new Intent(FirstPage.this,LibrarianUser.class);
+                Intent fpage3=new Intent(FirstPage.this,com.example.dr.library_app.admin.LibrarianUser.class);
                 startActivity(fpage3);
             }
         });
