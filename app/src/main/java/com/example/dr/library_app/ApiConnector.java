@@ -55,8 +55,6 @@ public class ApiConnector {
         }  catch (IOException e) {
             e.printStackTrace();
         }
-
-
         JSONArray jsonArray = null;
         try {
             String entityResponse = EntityUtils.toString(httpEntity);
